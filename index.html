@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Ingenieros</title>
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: #f3f3f3;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1f2740;
+            padding-top: 42px;
+        }
+
+        section,
+        div {
+            box-sizing: border-box
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .hero-top {
+            width: 100%;
+            max-width: 392px;
+            margin: 0 auto;
+            padding: 40px 16px 20px;
+            text-align: center;
+        }
+
+        .hero-top__badge {
+            display: inline-block;
+            margin: 0 0 10px;
+            color: #8d8d8d;
+            font-size: 11px;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: #e9e9e9;
+            padding: 4px 10px;
+            border-radius: 8px;
+        }
+
+        .hero-top__title-dark {
+            margin: 0;
+            color: #1f2f4a;
+            font-size: 28px;
+            line-height: 1.1;
+            font-weight: 900;
+            letter-spacing: -0.7px;
+        }
+
+        .hero-top__title-purple {
+            margin: 6px 0 16px;
+            color: #5a4bff;
+            font-size: 28px;
+            line-height: 1.1;
+            font-weight: 900;
+            letter-spacing: -0.7px;
+        }
+
+        .hero-top__text {
+            margin: 0 0 24px;
+            color: #6a7390;
+            font-size: 16px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .cta-btn {
+            background: #22c55e;
+            color: #fff;
+            border: none;
+            padding: 16px 18px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.25);
+            transition: all 0.2s ease;
+            display: block;
+            width: 100%;
+            max-width: 330px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 24px rgba(34, 197, 94, 0.35);
+        }
+
+        .cta-image {
+            width: 100%;
+            max-width: 420px;
+            margin: 16px auto;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-note {
+            margin: 12px 0 0;
+            color: #7b8196;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .benefits-wrap {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+            padding: 22px 14px 10px;
+        }
+
+        .benefits-card {
+            background: #fff;
+            border-radius: 32px;
+            padding: 30px 24px;
+            box-shadow: 0 8px 24px rgba(31, 39, 64, .04);
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .benefit-item:last-child {
+            margin-bottom: 0
+        }
+
+        .benefit-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: #f0eeff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 36px;
+            text-align: center;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .benefit-title {
+            margin: 0 0 6px;
+            color: #5a4bff;
+            font-size: 17px;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .benefit-text {
+            margin: 0;
+            color: #6f7690;
+            font-size: 15px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .fit-wrap {
+            width: 100%;
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 30px 14px 28px;
+        }
+
+        .fit-card {
+            position: relative;
+            background: #fff;
+            border-radius: 28px;
+            padding: 32px 24px 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(31, 39, 64, .04);
+        }
+
+        .fit-card+.fit-card {
+            margin-top: 28px
+        }
+
+        .fit-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+        }
+
+        .fit-card--yes::before {
+            background: #11d48d
+        }
+
+        .fit-card--no::before {
+            background: #ff7fc0
+        }
+
+        .fit-title {
+            margin: 4px 0 24px;
+            text-align: center;
+            font-size: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .fit-card--yes .fit-title {
+            color: #11d48d
+        }
+
+        .fit-card--no .fit-title {
+            color: #ff7fc0;
+            text-transform: uppercase
+        }
+
+        .fit-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 18px;
+        }
+
+        .fit-item {
+            display: grid;
+            grid-template-columns: 24px 1fr;
+            column-gap: 14px;
+            align-items: start;
+        }
+
+        .fit-icon {
+            font-size: 24px;
+            line-height: 1;
+            transform: translateY(-2px);
+            text-align: center;
+        }
+
+        .fit-card--yes .fit-icon {
+            color: #11d48d;
+        }
+
+        .fit-card--no .fit-icon {
+            color: #ff7fc0;
+        }
+
+        .fit-text {
+            color: #1f2f4a;
+            font-size: 16px;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        /* Projects Marquee */
+        .projects-marquee {
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .projects-track {
+            display: flex;
+            width: max-content;
+            animation: scrollProjects 35s linear infinite;
+        }
+
+        .projects-track:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-content {
+            display: flex;
+            gap: 16px;
+            padding-right: 16px;
+            /* Match gap for seamless loop */
+        }
+
+        .project-card {
+            width: 160px;
+            flex: 0 0 160px;
+            /* Fixed width */
+            text-align: center;
+            background: #fff;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(31, 39, 64, .04);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 12px;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            background: #eee;
+            display: block;
+        }
+
+        .project-card p {
+            margin: 10px 0 4px;
+            color: #1f2740;
+            font-size: 13px;
+            line-height: 1.2;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes scrollProjects {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .offer-highlight {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 40px 14px 20px;
+            text-align: center;
+        }
+
+        .offer-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: inline-block;
+            background: #f0eeff;
+            padding: 12px;
+            border-radius: 16px;
+        }
+
+        .offer-title {
+            margin: 0 0 18px;
+            color: #5a4bff;
+            font-size: 30px;
+            line-height: 1.1;
+            font-weight: 900;
+            letter-spacing: -.8px;
+        }
+
+        .offer-text {
+            margin: 0;
+            color: #6f7690;
+            font-size: 16px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        /* Testimonials Carousel */
+        .testimonials-section {
+            width: 100%;
+            padding: 40px 0 20px;
+        }
+
+        .testimonials-header {
+            max-width: 380px;
+            margin: 0 auto 24px;
+            padding: 0 14px;
+            text-align: center;
+        }
+
+        .testimonials-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .testimonials-title {
+            margin: 0 0 16px;
+            color: #5a4bff;
+            font-size: 28px;
+            line-height: 1.1;
+            font-weight: 900;
+        }
+
+        .testimonials-subtitle {
+            margin: 0;
+            color: #6f7690;
+            font-size: 15px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .testimonials-marquee {
+            overflow: hidden;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 14px;
+            width: max-content;
+            animation: testimonialsScroll 35s linear infinite;
+        }
+
+        .testimonials-track:hover {
+            animation-play-state: paused;
+        }
+
+        .testimonial-card {
+            width: 260px;
+            flex: 0 0 260px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(31, 39, 64, .06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes testimonialsScroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+                /* Note: when dealing with gaps, if it jumps slightly, we might need calc(-50% - gap/2). For now, standard 50% per user instructions */
+            }
+        }
+
+        .testimonial-stars {
+            color: #ffc107;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-text {
+            margin: 0 0 20px;
+            color: #1f2740;
+            font-size: 15px;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .testimonial-author {
+            margin: 0 0 4px;
+            color: #5a4bff;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .testimonial-role {
+            margin: 0;
+            color: #6f7690;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Bonus Section */
+        .bonuses-section {
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 40px 14px 20px;
+            text-align: center;
+        }
+
+        .bonuses-header {
+            margin-bottom: 30px;
+        }
+
+        .bonuses-title {
+            color: #5a4bff;
+            font-size: 26px;
+            font-weight: 900;
+            margin: 0 0 12px;
+            line-height: 1.1;
+        }
+
+        .bonuses-subtitle {
+            color: #6f7690;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        .bonuses-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media(min-width: 500px) {
+            .bonuses-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(min-width: 768px) {
+            .bonuses-grid {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+
+        .bonus-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 24px 16px 20px;
+            box-shadow: 0 8px 24px rgba(31, 39, 64, .06);
+            position: relative;
+            text-align: center;
+            border: 1px dashed #c0b8f0;
+        }
+
+        .bonus-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #11d48d;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 900;
+            padding: 4px 16px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .bonus-card img {
+            width: 100%;
+            max-width: 130px;
+            height: auto;
+            margin: 0 auto 16px;
+            display: block;
+        }
+
+        .bonus-card-title {
+            color: #1f2f4a;
+            font-size: 16px;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            width: 100%;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 40px 14px 20px;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pricing-label {
+            display: inline-block;
+            color: #5a4bff;
+            font-size: 12px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            background: #f0eeff;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        .pricing-title {
+            margin: 0;
+            color: #1f2740;
+            font-size: 32px;
+            line-height: 1.1;
+            font-weight: 900;
+        }
+
+        .pricing-subtitle {
+            margin: 16px 0 0;
+            color: #6f7690;
+            font-size: 15px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .pricing-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        @media(min-width: 768px) {
+            .pricing-cards {
+                flex-direction: row;
+                align-items: stretch;
+                justify-content: center;
+            }
+        }
+
+        .plan-card {
+            position: relative;
+            background: #fff;
+            border-radius: 28px;
+            padding: 32px 24px;
+            box-shadow: 0 10px 30px rgba(31, 39, 64, .07);
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            max-width: 420px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .plan-card.premium {
+            border: 2px solid #22c55e;
+            transform: scale(1.03);
+            position: relative;
+            animation: pulsePlanPremium 1.8s infinite;
+            z-index: 3;
+        }
+
+        @keyframes pulsePlanPremium {
+            0% {
+                box-shadow: 0 0 0 rgba(34, 197, 94, 0.35);
+            }
+
+            50% {
+                box-shadow: 0 0 22px rgba(34, 197, 94, 0.75);
+            }
+
+            100% {
+                box-shadow: 0 0 0 rgba(34, 197, 94, 0.35);
+            }
+        }
+
+        .best-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #11d48d;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(17, 212, 141, 0.4);
+        }
+
+        .plan-name {
+            margin: 0 0 12px;
+            color: #1f2740;
+            font-size: 26px;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .plan-price-old {
+            text-align: center;
+            color: #a0a6ba;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .plan-price-old s {
+            text-decoration: line-through;
+        }
+
+        .plan-price {
+            text-align: center;
+            font-size: 46px;
+            font-weight: 900;
+            color: #1f2f4a;
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px;
+            flex-grow: 1;
+        }
+
+        .plan-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 15px;
+            color: #1f2740;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .plan-feature i {
+            color: #11d48d;
+            font-size: 16px;
+            margin-top: 2px;
+            font-style: normal;
+            font-weight: 900;
+        }
+
+        .premium-bonuses {
+            margin: 0 0 24px;
+            padding: 16px 14px;
+            background: #fdfcff;
+            border: 1px dashed #5a4bff;
+            border-radius: 16px;
+        }
+
+        .premium-bonus-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1f2f4a;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .premium-bonus-text:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px 14px;
+            text-align: center;
+        }
+
+        .guarantee-badge {
+            font-size: 52px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .guarantee-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1f2f4a;
+            margin: 0 0 14px;
+        }
+
+        .guarantee-text {
+            font-size: 15px;
+            color: #6f7690;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px 14px 60px;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-title {
+            font-size: 28px;
+            line-height: 1.1;
+            font-weight: 900;
+            color: #5a4bff;
+            margin: 0;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 6px 16px rgba(31, 39, 64, .04);
+        }
+
+        .faq-q {
+            font-size: 16px;
+            font-weight: 800;
+            color: #1f2f4a;
+            margin: 0 0 8px;
+        }
+
+        .faq-a {
+            font-size: 15px;
+            color: #6f7690;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(31, 39, 64, 0.7);
+            display: none;
+            /* Flex when active */
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 16px;
+            backdrop-filter: blur(4px);
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .popup-card {
+            background: #fff;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 28px;
+            padding: 40px 24px 30px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+            animation: popupIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popupIn {
+            0% {
+                transform: scale(0.85) translateY(20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #f0eeff;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 20px;
+            line-height: 1;
+            cursor: pointer;
+            color: #5a4bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .popup-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: #1f2f4a;
+            margin: 0 0 16px;
+            line-height: 1.2;
+        }
+
+        .popup-text {
+            font-size: 16px;
+            color: #6f7690;
+            line-height: 1.5;
+            margin: 0 0 28px;
+        }
+
+        .popup-btn-sec {
+            display: inline-block;
+            margin-top: 20px;
+            color: #a0a6ba;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .popup-btn-sec:hover {
+            color: #6f7690;
+            text-decoration: underline;
+        }
+
+        .urgency-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            background: linear-gradient(90deg, #ff7a00, #ff2d55);
+            color: #fff;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 10px 12px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .16);
+        }
+
+        .pulse-today {
+            display: inline-block;
+            animation: pulseToday 1s infinite;
+            color: #fff700;
+        }
+
+        @keyframes pulseToday {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+            }
+
+            50% {
+                transform: scale(1.12);
+                text-shadow: 0 0 10px rgba(255, 255, 255, .9);
+            }
+
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .urgency-bar {
+                font-size: 15px;
+                padding: 11px 12px;
+            }
+
+            body {
+                padding-top: 44px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="urgency-bar">
+        ⚡ Descuento solo <span class="pulse-today">HOY</span> en esta página: <span id="today-date"></span>
+    </div>
+
+    <section class="hero-top">
+        <div class="hero-top__badge">NUEVO LANZAMIENTO</div>
+        <h1 class="hero-top__title-dark">Despierta el genio de tu hijo con</h1>
+        <h1 class="hero-top__title-purple">Mini Ingenieros</h1>
+        <p class="hero-top__text">Proyectos prácticos y divertidos para que los niños aprendan de robótica, electrónica
+            y programación desde casa.</p>
+        <img src="https://i.ibb.co/zgk3Zqf/Chat-GPT-Image-26-de-abr-de-2026-17-31-52.png" alt="Mini Ingenieros Kit"
+            class="cta-image">
+        <button class="cta-btn scroll-to-planos">¡QUIERO EMPEZAR HOY!</button>
+        <p class="hero-note">Acceso inmediato al material en PDF y videos</p>
+    </section>
+
+    <section class="benefits-wrap">
+        <div class="benefits-card">
+            <ul class="benefits-list">
+                <li class="benefit-item">
+                    <div class="benefit-icon">🧠</div>
+                    <div>
+                        <h3 class="benefit-title">Desarrollo Cognitivo</h3>
+                        <p class="benefit-text">Estimula el pensamiento lógico y la resolución de problemas desde
+                            temprana edad.</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon">🛠️</div>
+                    <div>
+                        <h3 class="benefit-title">100% Práctico</h3>
+                        <p class="benefit-text">Proyectos paso a paso con materiales fáciles de conseguir en casa o
+                            ferreterías.</p>
+                    </div>
+                </li>
+                <li class="benefit-item">
+                    <div class="benefit-icon">👨‍👩‍👧</div>
+                    <div>
+                        <h3 class="benefit-title">Tiempo en Familia</h3>
+                        <p class="benefit-text">Crea recuerdos inolvidables armando los proyectos junto a tus hijos.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="fit-wrap">
+        <div class="fit-card fit-card--yes">
+            <h3 class="fit-title">ESTE PROGRAMA ES PARA TI SI...</h3>
+            <ul class="fit-list">
+                <li class="fit-item">
+                    <div class="fit-icon">✓</div>
+                    <div class="fit-text">Quieres alejar a tus hijos de las pantallas improductivas.</div>
+                </li>
+                <li class="fit-item">
+                    <div class="fit-icon">✓</div>
+                    <div class="fit-text">Te gustaría que aprendan habilidades del futuro.</div>
+                </li>
+                <li class="fit-item">
+                    <div class="fit-icon">✓</div>
+                    <div class="fit-text">Buscas actividades educativas y súper divertidas para el fin de semana.</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="fit-card fit-card--no">
+            <h3 class="fit-title">NO ES PARA TI SI...</h3>
+            <ul class="fit-list">
+                <li class="fit-item">
+                    <div class="fit-icon">✕</div>
+                    <div class="fit-text">No estás dispuesto a dedicar tiempo para armar cosas con ellos.</div>
+                </li>
+                <li class="fit-item">
+                    <div class="fit-icon">✕</div>
+                    <div class="fit-text">Prefieres que pasen todo el día viendo videos en internet sin aprender nada.
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Marquee Fixed Infinite Loop -->
+    <section class="projects-marquee">
+        <div class="projects-track">
+            <!-- Duplicate content 1 for Loop -->
+            <div class="carousel-content">
+                <div class="project-card">
+                    <img src="https://i.ibb.co/0ph4WkhN/Chat-GPT-Image-26-de-abr-de-2026-16-42-17.png"
+                        alt="Tren Eléctrico">
+                    <p>Tren Eléctrico</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/JR5x2hvQ/Chat-GPT-Image-26-de-abr-de-2026-16-43-26.png"
+                        alt="Helicóptero">
+                    <p>Helicóptero</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/GvKB39Xh/Chat-GPT-Image-26-de-abr-de-2026-16-44-25.png"
+                        alt="Elevador Electrónico">
+                    <p>Elevador Electrónico</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/7dMx4hYc/Chat-GPT-Image-26-de-abr-de-2026-16-47-55.png"
+                        alt="Mano Robótica">
+                    <p>Mano Robótica</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/rPYN8F4/Chat-GPT-Image-26-de-abr-de-2026-16-48-06.png"
+                        alt="Bomba de Agua">
+                    <p>Bomba de Agua</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/2YjHJWHN/Chat-GPT-Image-26-de-abr-de-2026-16-50-10.png"
+                        alt="Robot de Cartón">
+                    <p>Robot de Cartón</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/YFMpzVmP/Chat-GPT-Image-26-de-abr-de-2026-16-52-41.png"
+                        alt="¡Y Mucho Más! +100 Proyectos">
+                    <p>¡Y Mucho Más!</p>
+                </div>
+            </div>
+            <!-- Duplicate content 2 for Loop -->
+            <div class="carousel-content" aria-hidden="true">
+                <div class="project-card">
+                    <img src="https://i.ibb.co/0ph4WkhN/Chat-GPT-Image-26-de-abr-de-2026-16-42-17.png"
+                        alt="Tren Eléctrico">
+                    <p>Tren Eléctrico</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/JR5x2hvQ/Chat-GPT-Image-26-de-abr-de-2026-16-43-26.png"
+                        alt="Helicóptero">
+                    <p>Helicóptero</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/GvKB39Xh/Chat-GPT-Image-26-de-abr-de-2026-16-44-25.png"
+                        alt="Elevador Electrónico">
+                    <p>Elevador Electrónico</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/7dMx4hYc/Chat-GPT-Image-26-de-abr-de-2026-16-47-55.png"
+                        alt="Mano Robótica">
+                    <p>Mano Robótica</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/rPYN8F4/Chat-GPT-Image-26-de-abr-de-2026-16-48-06.png"
+                        alt="Bomba de Agua">
+                    <p>Bomba de Agua</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/2YjHJWHN/Chat-GPT-Image-26-de-abr-de-2026-16-50-10.png"
+                        alt="Robot de Cartón">
+                    <p>Robot de Cartón</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://i.ibb.co/YFMpzVmP/Chat-GPT-Image-26-de-abr-de-2026-16-52-41.png"
+                        alt="¡Y Mucho Más! +100 Proyectos">
+                    <p>¡Y Mucho Más!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offer-highlight">
+        <div class="offer-icon">🚀</div>
+        <h2 class="offer-title">¡Despierta su creatividad!</h2>
+        <p class="offer-text">No necesitas ser un experto. Nuestras guías están diseñadas para que cualquier padre pueda
+            guiar a sus hijos de forma fácil y segura.</p>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="testimonials-header">
+            <div class="testimonials-icon">💬</div>
+            <h2 class="testimonials-title">Familias Felices</h2>
+            <p class="testimonials-subtitle">Mira lo que dicen otros padres que ya están creando con sus hijos.</p>
+        </div>
+
+        <div class="testimonials-marquee">
+            <div class="testimonials-track">
+                <!-- grupo 1 depoimentos -->
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Nunca vi a mi hijo tan concentrado. Armamos el cochecito el domingo y
+                        ahora no para de jugar con él. ¡Súper recomendado!"</p>
+                    <h4 class="testimonial-author">Carlos M.</h4>
+                    <p class="testimonial-role">Padre de Leo (8 años)</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Mi hija siempre fue curiosa. Con estos proyectos aprendió cómo
+                        funcionan los motores básicos. Las instrucciones son clarísimas."</p>
+                    <h4 class="testimonial-author">Laura S.</h4>
+                    <p class="testimonial-role">Madre de Valeria (10 años)</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Excelente material. Soy profesor de primaria y los proyectos son
+                        perfectos para introducir conceptos de física y mecánica."</p>
+                    <h4 class="testimonial-author">Roberto T.</h4>
+                    <p class="testimonial-role">Profesor y Padre</p>
+                </div>
+
+                <!-- grupo 2 depoimentos duplicados exatamente iguais -->
+                <div class="testimonial-card" aria-hidden="true">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Nunca vi a mi hijo tan concentrado. Armamos el cochecito el domingo y
+                        ahora no para de jugar con él. ¡Súper recomendado!"</p>
+                    <h4 class="testimonial-author">Carlos M.</h4>
+                    <p class="testimonial-role">Padre de Leo (8 años)</p>
+                </div>
+                <div class="testimonial-card" aria-hidden="true">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Mi hija siempre fue curiosa. Con estos proyectos aprendió cómo
+                        funcionan los motores básicos. Las instrucciones son clarísimas."</p>
+                    <h4 class="testimonial-author">Laura S.</h4>
+                    <p class="testimonial-role">Madre de Valeria (10 años)</p>
+                </div>
+                <div class="testimonial-card" aria-hidden="true">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Excelente material. Soy profesor de primaria y los proyectos son
+                        perfectos para introducir conceptos de física y mecánica."</p>
+                    <h4 class="testimonial-author">Roberto T.</h4>
+                    <p class="testimonial-role">Profesor y Padre</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Bônus Premium -->
+    <section class="bonuses-section">
+        <div class="bonuses-header">
+            <h2 class="bonuses-title">🎁 Bonos especiales incluidos solo en el Plan Premium</h2>
+            <p class="bonuses-subtitle">Al elegir el Plan Premium, también recibes estos materiales extra para mantener
+                a tu hijo creando, aprendiendo y divirtiéndose por más tiempo.</p>
+        </div>
+
+        <div class="bonuses-grid">
+            <div class="bonus-card">
+                <div class="bonus-badge">GRATIS</div>
+                <img src="https://i.ibb.co/9k5C9Ymh/Chat-GPT-Image-26-de-abr-de-2026-16-56-11-removebg-preview.png"
+                    alt="Guía de Robótica">
+                <h4 class="bonus-card-title">Guía de Robótica para Principiantes</h4>
+            </div>
+
+            <div class="bonus-card">
+                <div class="bonus-badge">GRATIS</div>
+                <img src="https://i.ibb.co/0VDhNbhb/Chat-GPT-Image-26-de-abr-de-2026-17-04-47-removebg-preview.png"
+                    alt="100 Actividades Creativas">
+                <h4 class="bonus-card-title">100 Actividades Creativas</h4>
+            </div>
+
+            <div class="bonus-card">
+                <div class="bonus-badge">GRATIS</div>
+                <img src="https://i.ibb.co/21qvDpvj/Chat-GPT-Image-26-de-abr-de-2026-16-57-41-removebg-preview.png"
+                    alt="Chistes Infantiles">
+                <h4 class="bonus-card-title">Chistes Infantiles</h4>
+            </div>
+
+            <div class="bonus-card">
+                <div class="bonus-badge">GRATIS</div>
+                <img src="https://i.ibb.co/Q75VwQQS/Chat-GPT-Image-26-de-abr-de-2026-16-59-06-removebg-preview.png"
+                    alt="27 Mágicas con Cartas">
+                <h4 class="bonus-card-title">27 Mágicas con Cartas</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="planos" class="pricing-section">
+        <div class="pricing-header">
+            <span class="pricing-label">OFERTA ESPECIAL</span>
+            <h2 class="pricing-title">Elige tu plan</h2>
+            <p class="pricing-subtitle">Acceso de por vida a los mejores proyectos de robótica casera.</p>
+        </div>
+
+        <div class="pricing-cards">
+
+            <!-- PLAN BÁSICO -->
+            <div class="plan-card">
+                <h3 class="plan-name">Plan Básico</h3>
+                <div class="plan-price-old"><s>$19.90</s></div>
+                <div class="plan-price">$4.90</div>
+
+                <ul class="plan-features">
+                    <li class="plan-feature"><i>✓</i> Guía principal de proyectos</li>
+                    <li class="plan-feature"><i>✓</i> 20 proyectos para empezar</li>
+                    <li class="plan-feature"><i>✓</i> Acceso inmediato</li>
+                    <li class="plan-feature"><i>✓</i> Ideal para probar el método</li>
+                </ul>
+
+                <button type="button" class="cta-btn" onclick="openUpgradePopup()">👉 Comprar Plan Básico</button>
+            </div>
+
+            <!-- PLAN PREMIUM -->
+            <div class="plan-card premium">
+                <div class="best-badge">🔥 MÁS VENDIDO</div>
+                <h3 class="plan-name">Plan Premium</h3>
+                <div class="plan-price-old"><s>$29.90</s></div>
+                <div class="plan-price">$9.90</div>
+
+                <ul class="plan-features">
+                    <li class="plan-feature"><i>✓</i> Acceso completo de por vida</li>
+                    <li class="plan-feature"><i>✓</i> Guía principal completa</li>
+                    <li class="plan-feature"><i>✓</i> Más de 100 proyectos creativos</li>
+                    <li class="plan-feature"><i>✓</i> Actividades para reducir el uso del celular</li>
+                    <li class="plan-feature"><i>✓</i> Proyectos de robótica, manualidades y experimentos</li>
+                    <li class="plan-feature"><i>✓</i> Acceso inmediato</li>
+                </ul>
+
+                <div class="premium-bonuses">
+                    <div class="premium-bonus-text">🎁 Guía de Robótica para Principiantes</div>
+                    <div class="premium-bonus-text">🎁 100 Actividades Creativas</div>
+                    <div class="premium-bonus-text">🎁 Chistes Infantiles</div>
+                    <div class="premium-bonus-text">🎁 27 Mágicas con Cartas</div>
+                </div>
+
+                <a href="CHECKOUT_PREMIUM" class="cta-btn green">👉 Comprar Plan Premium</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee-section">
+        <div class="guarantee-badge">🛡️</div>
+        <h2 class="guarantee-title">Garantía de 7 días</h2>
+        <p class="guarantee-text">Prueba Mini Ingenieros con tranquilidad. Si no sientes que las actividades ayudan a tu
+            hijo a pasar más tiempo creando y menos tiempo en el celular, puedes pedir la devolución dentro de los
+            primeros 7 días.</p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-header">
+            <h2 class="faq-title">Preguntas Frecuentes</h2>
+        </div>
+
+        <div class="faq-item">
+            <h4 class="faq-q">¿El producto es físico o digital?</h4>
+            <p class="faq-a">Es 100% digital. Recibes el acceso inmediatamente después de la compra.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 class="faq-q">¿Necesito saber de robótica?</h4>
+            <p class="faq-a">No. Las actividades están explicadas paso a paso para que cualquier padre pueda acompañar
+                al niño.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 class="faq-q">¿Qué edad es ideal?</h4>
+            <p class="faq-a">Es recomendado para niños de 4 a 12 años, siempre con acompañamiento de un adulto en las
+                actividades que usen materiales pequeños o componentes simples.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 class="faq-q">¿Necesito comprar materiales caros?</h4>
+            <p class="faq-a">No. La mayoría de los proyectos usa materiales simples y fáciles de encontrar en casa o en
+                papelerías.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 class="faq-q">¿Los bonos vienen en el Plan Básico?</h4>
+            <p class="faq-a">No. Los bonos especiales están incluidos solo en el Plan Premium.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 class="faq-q">¿Cuándo recibo el acceso?</h4>
+            <p class="faq-a">El acceso es inmediato después de confirmar el pago.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 class="faq-q">¿Funciona en cualquier país?</h4>
+            <p class="faq-a">Sí. Como es un producto digital, puedes acceder desde cualquier país de Latinoamérica.</p>
+        </div>
+    </section>
+
+    <!-- Upgrade Popup -->
+    <div class="popup-overlay" id="upgradePopup">
+        <div class="popup-card">
+            <button class="popup-close" onclick="closeUpgradePopup()">✕</button>
+            <h3 class="popup-title">¡Espera! Has desbloqueado una mejora 🎁</h3>
+            <p class="popup-text">Por solo + $3.00 te llevas el Paquete Completo con más de 100 proyectos, bonos premium
+                y acceso de por vida. ¿Quieres aprovechar?</p>
+
+            <a href="CHECKOUT_UPGRADE_790" class="cta-btn green">Sí, quiero el Paquete Completo por $7.90</a>
+            <a href="CHECKOUT_BASICO" class="popup-btn-sec">No, prefiero solo el Plan Básico por $4.90</a>
+        </div>
+    </div>
+
+    <script>
+        function openUpgradePopup() {
+            document.getElementById('upgradePopup').classList.add('active');
+        }
+        function closeUpgradePopup() {
+            document.getElementById('upgradePopup').classList.remove('active');
+        }
+
+        // Close popup if clicked outside the card
+        document.getElementById('upgradePopup').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeUpgradePopup();
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const dateElement = document.getElementById("today-date");
+            const today = new Date();
+
+            const day = String(today.getDate()).padStart(2, "0");
+            const month = String(today.getMonth() + 1).padStart(2, "0");
+            const year = today.getFullYear();
+
+            dateElement.textContent = `${day}/${month}/${year}`;
+
+            // Smooth scroll for CTAs
+            document.querySelectorAll('.cta-btn').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    // Ignore actual buy buttons inside pricing and popup so they keep functionality
+                    const href = button.getAttribute('href');
+                    if (button.closest('.pricing-section') || button.closest('.popup-card') || (href && href.includes('CHECKOUT'))) return;
+
+                    e.preventDefault();
+                    const planos = document.getElementById('planos');
+                    if (planos) {
+                        planos.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
